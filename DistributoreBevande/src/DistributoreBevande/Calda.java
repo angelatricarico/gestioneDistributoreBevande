@@ -5,7 +5,7 @@ public class Calda extends Categoria {
 	public Calda () {
 		super("Calda");
 		
-		String[] prodottiDefault= {"Caffè ristretto,Caffè Lungo,Ginseng,Cappuccino,"};
+		String[] prodottiDefault= {"Caffè ristretto,Caffè Lungo,Ginseng,Cappuccino,Cioccolata Calda,Latte Caldo,Latte Macchiato"};
 			
 	
 

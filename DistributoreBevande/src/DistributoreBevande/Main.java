@@ -26,8 +26,7 @@ CONSEGNA: entro il 20 dicembre.
 		//Distributore distributore1 = new Distributore("BeviQuantoVuoi");
 		
 		System.out.println(distributore.nome);
-		//System.out.println(distributore1.nome);
-		
+			
 		Scanner scanner = new Scanner(System.in);
 		
 		int inputUtente;
