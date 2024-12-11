@@ -23,7 +23,7 @@ public class Distributore {
 		}
 		return true;
 	} 
-	
+	//costruttore della classe
 	public Distributore(String nome) {
 		this.nome = nome;
 		bicchieri = (int) (Math.random() * 21);
