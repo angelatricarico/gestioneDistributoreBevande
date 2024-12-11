@@ -11,7 +11,12 @@ public class Distributore {
 	
 	
 	public void stampaCategoria() {
-		System.out.print("");
+		
+		System.out.print("Elenco delle bevande fredde: ");
+		
+		
+		System.out.print("Elenco delle bevande calde: ");
+
 	}
 	
 	public boolean controlloRisorse() {
