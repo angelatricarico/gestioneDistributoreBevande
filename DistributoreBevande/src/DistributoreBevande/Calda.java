@@ -12,3 +12,5 @@ public class Calda extends Categoria {
 	}
 
 }
+
+//sono riccardo
