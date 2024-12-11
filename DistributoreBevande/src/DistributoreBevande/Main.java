@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Distributore distributore = new Distributore("AllYouCanDrink");
+		Distributore distributore = new Distributore("All You Can Drink");
 		System.out.println(distributore.nome);
 		
 		Scanner scanner = new Scanner(System.in);
