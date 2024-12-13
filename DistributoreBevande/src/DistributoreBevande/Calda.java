@@ -1,16 +1,16 @@
 package DistributoreBevande;
 
 public class Calda extends Categoria {
-	static final private String[] prodottiDefault = { "Caffè stretto", "Caffè lungo", "Cappuccino", "Ginseng",
-			"Thè caldo", "Cioccolata calda", "Latte macchiato" };
-
-	Calda() {
-		super("Calda", prodottiDefault);
-
+	
+	String [] prodottiDefault = {"Caffè stretto", "Caffè lungo", "Cappuccino", "Ginseng", "Thè caldo", "Cioccolata calda", 
+	"Latte macchiato"};
+	
+	public Calda () {
+		super("Calda");
+		
+		for(int i = 0; i<prodottiDefault.length; i++) {
+			this.prodotti.add(new Prodotto(prodottiDefault[i]));
+		}
 	}
 
-	@Override
-	public void stampaProva() {
-		System.out.println("Prova Calda");
-	}
 }

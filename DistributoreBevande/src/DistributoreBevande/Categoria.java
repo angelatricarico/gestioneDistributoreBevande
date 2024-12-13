@@ -4,33 +4,19 @@ import java.util.ArrayList;
 
 public class Categoria {
 	
-	// Attributes
 	String nome;
-	private ArrayList <Prodotto> prodotti = new ArrayList<>();
+	ArrayList <Prodotto> prodotti = new ArrayList <Prodotto> ();
 	
-	// Constructors
-	public Categoria(String nome, String[] prodottiDefault) {
+	public Categoria(String nome) {
+		
 		this.nome = nome;
-		for (int i = 0; i<prodottiDefault.length; i++) {
-			this.prodotti.add(new Prodotto(prodottiDefault[i]));
-		}
 	}
 	
-	//Methods
-	
-	// Stampa prodotti della categoria
 	public void stampaProdotti() {
-		System.out.println("I prodotti della bevanda " + this.nome);
-		System.out.println("*******************************");
-		for (int i = 0; i < prodotti.size(); i++) {
-			Prodotto prodotto = prodotti.get(i);
-			System.out.println(String.format("%d) %s - %f", i + 1, prodotto.nome, prodotto.prezzo));
+		
+		for (int i = 0; i<prodotti.size(); i++) {
+			System.out.println(prodotti.get(i).nome);
 		}
 	}
-	
-	protected void stampaProva() {
-		System.out.println("Prova Categoria");
-	}
-	
-	protected 
+
 }
