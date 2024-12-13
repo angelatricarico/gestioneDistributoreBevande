@@ -17,27 +17,20 @@ public class Main {
 		
 		inputUtente = 1;
 		while (inputUtente == 1) {
-			System.out.println("Premi 1 per scegliere fra le bevande calde; 2 per scegliere fra le bevande fredde; 3 per uscire dal menù: ");
+			
+			distributore.stampaCategorie();
+			
 			int sceltaUtente = scanner.nextInt();
-			
-			
-			switch (sceltaUtente) {
-			case 1: 
-				System.out.println("Scegli fra le bevande calde");
-				
-			break;
-			
-			case 2:
-				System.out.println("Scegli fra le bevande fredde.");
-				
-			break;
-			
-			case 3: 
-				System.out.println("Sei uscito dal menù.");
-				
+			if (sceltaUtente == 9) {
+				System.out.println("Arrivederci");
 				inputUtente = -1;
-			break;
+			} else if (sceltaUtente > distributore.categorie.length){
+				System.out.println("Input non valido. Per favore, riprovare.");
+			} else {
+				System.out.println("Ecco i seguenti prodotti della categoria " + distributore.categorie[sceltaUtente-1].nome);
+				distributore.categorie[sceltaUtente-1].stampaProdotti();
 			}
+			
 		}
 		scanner.close();	
 	}
