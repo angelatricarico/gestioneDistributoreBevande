@@ -1,20 +1,16 @@
 package DistributoreBevande;
 
-
 public class Fredda extends Categoria {
-	
-	public Fredda () {
-		super("Fredda");
-				
-		
+	static final private String[] prodottiDefault = { "Acqua Naturale", "Acqua Frizzante", "Thè limone", "Thè pesca",
+			"Aranciata", "Cola", "Energy drink" };
+
+	Fredda() {
+		super("Fredda", prodottiDefault);
 	}
 	
-	//Acqua Naturale
-	//Acqua Frizzante
-	//Thè limone
-	//Thè pesca
-	//Aranciata
-	//Cola
-	//Energy drink
-
+	@Override
+	protected void stampaProva() {
+		super.stampaProva();
+		System.out.println("Prova Fredda");
+	}
 }
