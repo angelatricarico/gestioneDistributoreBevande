@@ -7,17 +7,15 @@ public class Distributore {
 	int bicchieri;
 	int bacchette;
 	int cubettiZucchero;
-	Categoria[] categorie = new Categoria[2];
+	Categoria[] categorie = {new Calda(), new Fredda()};
 	
-	
-	public void stampaCategoria() {
-		
-		System.out.print("Elenco delle bevande fredde: ");
-		
-		
-		System.out.print("Elenco delle bevande calde: ");
-
+	public void stampaCategorie() {
+		for (int i = 0; i < categorie.length; i++) {
+			System.out.println("Premi " + (i+1) + " per " + categorie[i].nome);
+		}
+		System.out.println("Premi 9 per uscire.");
 	}
+
 	
 	public boolean controlloRisorse() {
 		if (bicchieri == 0) {
@@ -34,8 +32,5 @@ public class Distributore {
 		bicchieri = (int) (Math.random() * 21);
 		bacchette = (int) (Math.random() * 21);
 		cubettiZucchero = (int) (Math.random() * 21);
-		Fredda fredda = new Fredda();
-		Calda calda = new Calda();
-		//categorie = {fredda, calda}; 
 	}
 }
