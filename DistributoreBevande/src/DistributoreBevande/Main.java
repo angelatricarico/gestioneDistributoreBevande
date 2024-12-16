@@ -9,26 +9,42 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Distributore distributore = new Distributore("AllYouCanDrink");
-		System.out.println(distributore.nome);
+		System.out.println("BENVENUTO AL DISTRIBUTORE " + distributore.nome + "!\nPer favore, seleziona una categoria di prodotti: ");
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		int inputUtente;
+		int input;
 		
-		inputUtente = 1;
-		while (inputUtente == 1) {
+		input = 1;
+		while (input == 1) {
 			
 			distributore.stampaCategorie();
 			
-			int sceltaUtente = scanner.nextInt();
-			if (sceltaUtente == 9) {
+			int sceltaCategoria = scanner.nextInt();
+			if (sceltaCategoria == 9) {
 				System.out.println("Arrivederci");
-				inputUtente = -1;
-			} else if (sceltaUtente > distributore.categorie.length){
+				input = -1;
+			} else if (sceltaCategoria > distributore.categorie.length){
 				System.out.println("Input non valido. Per favore, riprovare.");
 			} else {
-				System.out.println("Ecco i seguenti prodotti della categoria " + distributore.categorie[sceltaUtente-1].nome);
-				distributore.categorie[sceltaUtente-1].stampaProdotti();
+				
+				int sceltaProdotto = -1;
+				while (true) {
+					System.out.println("Ecco i seguenti prodotti della categoria " + distributore.categorie[sceltaCategoria-1].nome + ":");
+					distributore.categorie[sceltaCategoria-1].stampaProdotti();
+					System.out.println("Quale prodotto vuoi scegliere?");
+					sceltaProdotto = scanner.nextInt();
+					
+					if (sceltaProdotto == 0) {
+						break;
+					} else if ( sceltaProdotto > distributore.categorie[sceltaCategoria-1].prodotti.size()) {
+						System.out.println("Input non valido. Per favore, riprovare.");
+					} else {
+						distributore.controlloQuantita(sceltaCategoria-1, sceltaProdotto-1);
+						//aggiornare quantità
+						distributore.controlloMoneta(scanner, distributore.categorie[sceltaCategoria-1].prodotti.get(sceltaProdotto-1));
+					}
+				}
 			}
 			
 		}
