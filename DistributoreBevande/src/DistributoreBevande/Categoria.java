@@ -6,9 +6,10 @@ public class Categoria {
 	
 	String nome;
 	ArrayList <Prodotto> prodotti = new ArrayList <Prodotto> ();
+	boolean controlloAggiuntivo;
 	
 	public Categoria(String nome) {
-		
+		this.controlloAggiuntivo = false;
 		this.nome = nome;
 	}
 	
@@ -40,11 +41,18 @@ public class Categoria {
 	public void cancellaProdotto(int indiceDaCancellare) {
 		
 		//controllare che l'indice inserito corrisponda ad un prodotto
-		prodotti.remove(indiceDaCancellare);
-		System.out.println("Prodotto rimosso con successo!");
+		if (indiceDaCancellare >= 0 && indiceDaCancellare < prodotti.size()) {
+			prodotti.remove(indiceDaCancellare);
+			System.out.println("Prodotto rimosso con successo!");
+		} else {
+			System.out.println("Prodotto inesistente");
+		}
+		
 	}
 	
 	
 	//metodo per aggiornare prodotti
-
+	
+	
+	//metodo per controllare quantita
 }

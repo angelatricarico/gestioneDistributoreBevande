@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 //branchAngela
 
+// Problema del prezzo double
+
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -27,22 +30,29 @@ public class Main {
 			} else if (sceltaCategoria > distributore.categorie.length){
 				System.out.println("Input non valido. Per favore, riprovare.");
 			} else {
+				Categoria categoriaScelta = distributore.categorie[sceltaCategoria-1];
 				
 				int sceltaProdotto = -1;
 				while (true) {
-					System.out.println("Ecco i seguenti prodotti della categoria " + distributore.categorie[sceltaCategoria-1].nome + ":");
+					System.out.println("Ecco i seguenti prodotti della categoria " + categoriaScelta.nome + ":");
 					distributore.categorie[sceltaCategoria-1].stampaProdotti();
 					System.out.println("Quale prodotto vuoi scegliere?");
 					sceltaProdotto = scanner.nextInt();
 					
 					if (sceltaProdotto == 0) {
 						break;
-					} else if ( sceltaProdotto > distributore.categorie[sceltaCategoria-1].prodotti.size()) {
+					} else if ( sceltaProdotto > categoriaScelta.prodotti.size()) {
 						System.out.println("Input non valido. Per favore, riprovare.");
 					} else {
-						distributore.controlloQuantita(sceltaCategoria-1, sceltaProdotto-1);
-						//aggiornare quantità
-						distributore.controlloMoneta(scanner, distributore.categorie[sceltaCategoria-1].prodotti.get(sceltaProdotto-1));
+						Prodotto prodottoScelto = categoriaScelta.prodotti.get(sceltaProdotto-1);
+						// Abbiamo gia il controllo della validita' del codiceProdotto
+						
+						// da fare:
+						// Controllo Quantita Prodotto -> Erogazione fatto
+						// Controllo Qunatita Prodotto -> Controllo Bicchiere -> Chiedere zucchero -> Controllo palette (opzionale) -> Erogazione
+						distributore.controlloQuantita(categoriaScelta, prodottoScelto, scanner);
+						
+						
 					}
 				}
 			}

@@ -23,36 +23,103 @@ public class Distributore {
 	}
 
 	
-	public boolean controlloRisorse() {
-		if (bicchieri == 0) {
-			return false;
-		}
-		if (cubettiZucchero == 0) {
-			return false;
-		}
-		return true;
-	} 
-	
-	public void controlloQuantita(int sceltaCategoria, int sceltaProdotto) {
+	// Controllo generale dell'erogazione
+	public void controlloQuantita(Categoria sceltaCategoria, Prodotto sceltaProdotto, Scanner scanner) {
 		
-		if (categorie[sceltaCategoria].prodotti.get(sceltaProdotto).quantita == 0) {
-			System.out.println("Ci dispiace, il prodotto è esaurito. Scegline un altro per favore.");
-	/*	} else {
-			System.out.print("Disponibile"); */
-		}
+		// differenziare categoria calda e categoria fredda
 		
+		if (sceltaCategoria.controlloAggiuntivo == true) {
+			// controllo CALDA
+			
+			// Controllo Qunatita Prodotto -> Controllo Bicchiere -> Chiedere zucchero -> Controllo bacchette (opzionale) -> Erogazione
+			// controllo di quantita
+			if (sceltaProdotto.quantita == 0 ) {
+				System.out.println("Prodotto non disponibile");
+				return;
+			}
+			
+			// controllo moneta
+			if (!controlloMoneta(scanner, sceltaProdotto)) {
+				return;
+			}
+			
+			// controllo bicchieri
+			if (this.bicchieri == 0) {
+				System.out.println("Bicchiere non disponibile");
+				System.out.println("Erogazione denaro inserito");
+				return;
+			}
+			
+			int zucchero = controlloZucchero(scanner);
+			
+			// controllo bacchette
+			if (this.bacchette == 0) {
+				System.out.println("Bacchetta esaurita");
+			} else {
+				this.bacchette--;
+			}
+			
+			System.out.println("Prodotto erogato");
+			
+			// Aggiornamento
+			this.bicchieri--;
+			this.cubettiZucchero -= zucchero;
+			sceltaProdotto.quantita--;
+			
+		} else {
+			// controllo FREDDA
+			
+			// controllo di quantita
+			if (sceltaProdotto.quantita > 0 ) {
+				
+				// controllo moneta
+				if (controlloMoneta(scanner, sceltaProdotto)) {
+					System.out.println("Prodotto erogato!");
+					sceltaProdotto.quantita--;
+				}
+				
+			}
+		}
 	}
 	
-	public void controlloMoneta(Scanner scanner, Prodotto prodotto) {
+	public int controlloZucchero(Scanner scanner) {
+		int zucchero = 0;
 		
-		double credito = 0; //credito del distributore mentre l'utente inserisce moneta
+		do {
+			System.out.println(String.format("Inserire quantita zucchero (%d disponibile)", this.cubettiZucchero));
+			zucchero = scanner.nextInt();
+			
+			if (zucchero > this.cubettiZucchero) {
+				System.out.println("Zucchero insufficiente");
+			} else if (zucchero > 5) {
+				System.out.println("Inserire una quantita tra 0 - 5");
+			} 
+			
+		} while (zucchero > 5 || zucchero > this.cubettiZucchero);
 		
+		return zucchero;
+	}
+	
+	public boolean controlloMoneta(Scanner scanner, Prodotto prodotto) {
+		//credito del distributore mentre l'utente inserisce moneta
+		double credito = 0; 
+		double inputCredito = 0;
+		double prezzo = prodotto.prezzo;
+		//loop principale per l'inserimento della moneta
 		while (credito < prodotto.prezzo) {
-			System.out.print("Inserisci moneta: " + prodotto.prezzo);
-			credito += scanner.nextInt(); //lo scanner riceve l'input dell'utente e lo aumenta
+			System.out.println("Premere 99 per cancellare l'operazione");
+			System.out.printf("Inserisci moneta: %.2f", prezzo - credito);
+			inputCredito = scanner.nextDouble();
+			
+			if (inputCredito == 99) {
+				System.out.println("Operazione cancellata");
+				System.out.println("Erogazione resto! " + credito);
+				return false;
+			} else {
+				credito += inputCredito;  
+			}
 		}
-		System.out.println("Prodotto erogato");
-		
+		return true;
 	}
 	
 	
@@ -72,5 +139,6 @@ public class Distributore {
 				categoria1.prodotti.add(prodotto1);
 			}
 		}
+		categorie[0].controlloAggiuntivo = true;
 	}
 }
