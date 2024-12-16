@@ -2,12 +2,13 @@ package DistributoreBevande;
 
 public class Prodotto {
 	
+	String nome;
 	int quantità;
 	double prezzo;
-	String nome;
 	
-	public Prodotto(String nome) {
+	public Prodotto(String nome) {	
 		this.nome = nome;
 	}
-
+	
+	
 }

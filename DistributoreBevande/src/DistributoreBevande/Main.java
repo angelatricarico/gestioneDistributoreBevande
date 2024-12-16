@@ -17,10 +17,10 @@ public class Main {
 		
 		inputUtente = 1;
 		while (inputUtente == 1) {
-			
 			distributore.stampaCategorie();
-			
 			int sceltaUtente = scanner.nextInt();
+			
+			
 			if (sceltaUtente == 9) {
 				System.out.println("Arrivederci");
 				inputUtente = -1;
