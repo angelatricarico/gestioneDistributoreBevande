@@ -1,43 +1,51 @@
 package DistributoreBevande;
-
 import java.util.Scanner;
 
 public class Main {
+    public static void main(String[] args) {
+        GestoreDistributore distributore = new GestoreDistributore();
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
 
-	public static void main(String[] args) {
-		
-		Distributore distributore = new Distributore("All You Can Drink");
-		System.out.println(distributore.nome);
-		
-		Scanner scanner = new Scanner(System.in);
-		
-		int inputUtente;
-		
-		inputUtente = 1;
-		while (inputUtente == 1) {
-			System.out.println("Premi 1 per scegliere fra le bevande calde; 2 per scegliere fra le bevande fredde; 3 per uscire dal menù: ");
-			int sceltaUtente = scanner.nextInt();
-			
-			
-			switch (sceltaUtente) {
-			case 1: 
-				System.out.println("Scegli fra le bevande calde");
-				
-			break;
-			
-			case 2:
-				System.out.println("Scegli fra le bevande fredde.");
-				
-			break;
-			
-			case 3: 
-				System.out.println("Sei uscito dal menù.");
-				
-				inputUtente = -1;
-			break;
-			}
-		}
-		scanner.close();	
-	}
+        while (running) {				 // Menu principale
+           
+            System.out.println("\n--- Distributore Automatico ---");
+            System.out.println("1. Visualizza lista prodotti");
+            System.out.println("2. Ritira resto");
+            System.out.println("3. Inserisci denaro");
+            System.out.println("4. Acquista un prodotto");
+            System.out.println("5. Esci");
+            System.out.println("(Il tuo credito è €" + distributore.getCredito() + ")");
 
+            System.out.print("Seleziona un'opzione: ");				//switch per scegliere
+            int scelta = scanner.nextInt();
+
+            switch (scelta) {
+                case 1:
+                    distributore.mostraProdotti();
+                    break;
+                case 2:
+                    distributore.ritiraResto();
+                    break;
+                case 3:
+                    distributore.inserisciDenaro(scanner);
+                    break;
+                case 4:
+                    distributore.acquistaProdotto(scanner);
+                    break;
+                case 1984:
+                    distributore.modalitaOperatore(scanner);
+                    break;
+                case 5:
+                    System.out.println("Grazie per aver usato il distributore. A presto!");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Opzione non valida. Riprova.");
+            }
+        }
+        scanner.close();
+    }
 }
+
+	
