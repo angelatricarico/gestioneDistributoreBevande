@@ -15,7 +15,7 @@ public class Categoria {
 	
 	public void stampaProdotti() {
 		
-		System.out.println("0) Per scegliere nuovamente la categoria");
+		System.out.println("0) MENU' CATEGORIE");
 		for (int i = 0; i<prodotti.size(); i++) {
 			System.out.println((i+1) + ")" + " " + prodotti.get(i).toString());
 		}
