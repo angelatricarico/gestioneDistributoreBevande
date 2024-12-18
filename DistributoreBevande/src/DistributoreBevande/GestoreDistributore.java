@@ -138,8 +138,9 @@ public class GestoreDistributore {
             System.out.println("1. Modifica prezzo prodotto");
             System.out.println("2. Aggiungi nuovo prodotto");
             System.out.println("3. Rimuovi prodotto");
-            System.out.println("4. stampa registro");
+            System.out.println("4. stampa registro transazioni");
             System.out.println("5. stampa registro risorse caffetteria");
+            System.out.println("6. ricarica risorse caffetteria");
             System.out.println("0. Esci dalla modalità operatore");
 
             System.out.print("Seleziona un'opzione: ");
@@ -209,7 +210,7 @@ public class GestoreDistributore {
                 case 6: // Ricarica risorse
                     System.out.print("Quantità di bicchierini da aggiungere: ");
                     bicchieri += scanner.nextInt();
-                    System.out.print("Quantità di zucchero (cucchiaini) da aggiungere: ");
+                    System.out.print("Quantità di zucchero (dosi) da aggiungere: ");
                     zucchero += scanner.nextInt();
                     System.out.print("Quantità di bacchettine da aggiungere: ");
                     palette += scanner.nextInt();
