@@ -3,7 +3,8 @@ package DistributoreBevande;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class GestoreDistributore {
+public class GestoreDistributore 
+{
     private ArrayList<Prodotto> prodotti;
     private ArrayList<Prodotto>Pvenduti;
     private double credito;
@@ -16,7 +17,8 @@ public class GestoreDistributore {
  
 
     // Costruttore per inizializzare il credito e la lista dei prodotti
-    public GestoreDistributore() {
+    public GestoreDistributore() 
+    {
         credito = 10;
         operatore = false;
         Pvenduti = new ArrayList<>();
@@ -34,19 +36,23 @@ public class GestoreDistributore {
         prodotti.add(new Prodotto("cioccolata", "caldo", 4, 10));
     }
 
-    public void mostraProdotti() {
+    public void mostraProdotti() 
+    {
         System.out.println("\n--- Lista Prodotti ---");
-        for (int i = 0; i < prodotti.size(); i++) {
+        for (int i = 0; i < prodotti.size(); i++) 
+        {
             System.out.println(i + ". " + prodotti.get(i));
         }
     }
 
-    public void ritiraResto() {
+    public void ritiraResto() 
+    {
         System.out.println("Ecco il tuo resto: €" + credito);
         credito = 0;
     }
 
-    public void inserisciDenaro(Scanner scanner) {
+    public void inserisciDenaro(Scanner scanner) 
+    {
     	System.out.println("inserisci importo");
     	int denaro = scanner.nextInt();
     	credito += denaro;
@@ -59,12 +65,14 @@ public class GestoreDistributore {
     }     */
     	
 
-    public void acquistaProdotto(Scanner scanner) {
+    public void acquistaProdotto(Scanner scanner)
+    {
         System.out.println("\n--- Acquisto prodotto ---");
         System.out.print("Inserisci il numero del prodotto da acquistare (0-" + (prodotti.size() - 1) + "): ");
         int id = scanner.nextInt();
 
-        if (id < 0 || id >= prodotti.size()) {
+        if (id < 0 || id >= prodotti.size()) 
+        {
             System.out.println("Errore: id non valido.");
             return;
         }
@@ -72,21 +80,25 @@ public class GestoreDistributore {
         Prodotto prodotto = prodotti.get(id);
 
         // Controlla il credito
-        if (credito < prodotto.getprezzo()) {
+        if (credito < prodotto.getprezzo()) 
+        {
             System.out.println("Credito insufficiente. Inserire più denaro.");
             return;
         }
 
         // Controlla se il prodotto è disponibile
-        if (prodotto.quantita() <= 0) {
+        if (prodotto.quantita() <= 0) 
+        {
             System.out.println("Prodotto esaurito. Scegli un altro prodotto.");
             return;
         }
 
         // Controllo per prodotti caldi
-        if (prodotto.getcat().equalsIgnoreCase("caldo")) {
+        if (prodotto.getcat().equalsIgnoreCase("caldo")) 
+        {
             // Controlla bicchieri
-            if (bicchieri < 1) {
+            if (bicchieri < 1) 
+            {
                 System.out.println("Impossibile acquistare bevande calde, bicchieri non disponibili.");
                 return;
             }
@@ -95,7 +107,8 @@ public class GestoreDistributore {
             System.out.print("Selezionare quantità di zucchero (da 0 a 5): ");
             int zuccherato = scanner.nextInt();
 
-            if (zuccherato > zucchero) {
+            if (zuccherato > zucchero) 
+            {
                 System.out.println("Non c'è abbastanza zucchero. Procedere senza zucchero? (1: Sì, 2: No): ");
                 int risposta = scanner.nextInt();
                 if (risposta != 1) return;
@@ -105,11 +118,13 @@ public class GestoreDistributore {
             zucchero -= zuccherato; // Consuma zucchero
 
             // Controlla palette
-            if (zuccherato > 0 && palette < 1) {
+            if (zuccherato > 0 && palette < 1) 
+            {
                 System.out.print("Non ci sono abbastanza palette. Procedere senza palette? (1: Sì, 2: No): ");
                 int risposta = scanner.nextInt();
                 if (risposta != 1) return;
-            } else if (zuccherato > 0) {
+            } else if (zuccherato > 0) 
+            {
                 palette--; // Consuma una paletta
             }
 
@@ -131,9 +146,11 @@ public class GestoreDistributore {
             
         
 
-    public void modalitaOperatore(Scanner scanner) {
+    public void modalitaOperatore(Scanner scanner) 
+    {
         operatore = true;
-        while (operatore) {
+        while (operatore) 
+        {
             System.out.println("\n--- Menu Operatore ---");
             System.out.println("1. Modifica prezzo prodotto");
             System.out.println("2. Aggiungi nuovo prodotto");
@@ -146,7 +163,8 @@ public class GestoreDistributore {
             System.out.print("Seleziona un'opzione: ");
             int scelta = scanner.nextInt();
 
-            switch (scelta) {
+            switch (scelta) 
+            {
                 case 0:
                     System.out.println("Uscita dalla modalità Operatore.");
                     operatore = false;
@@ -158,7 +176,8 @@ public class GestoreDistributore {
 
                     if (indice < 0 || indice >= prodotti.size()) {
                         System.out.println("Errore: indice non valido.");
-                    } else {
+                    } else 
+                    {
                         System.out.print("Inserisci il nuovo prezzo per " + prodotti.get(indice).getnome() + ": ");
                         int nuovoPrezzo = scanner.nextInt();
                         prodotti.get(indice).setprezzo(nuovoPrezzo);
@@ -184,9 +203,11 @@ public class GestoreDistributore {
                     System.out.print("Inserisci l'indice del prodotto da rimuovere (0-" + (prodotti.size() - 1) + "): ");
                     int rimuoviIndice = scanner.nextInt();
 
-                    if (rimuoviIndice < 0 || rimuoviIndice >= prodotti.size()) {
+                    if (rimuoviIndice < 0 || rimuoviIndice >= prodotti.size()) 
+                    {
                         System.out.println("Errore: indice non valido.");
-                    } else {
+                    } else 
+                    {
                         prodotti.remove(rimuoviIndice);
                         System.out.println("Prodotto rimosso.");
                     }
@@ -222,7 +243,8 @@ public class GestoreDistributore {
         }
     }
 
-    public double getCredito() {
+    public double getCredito() 
+    {
         return credito;
     }
 }

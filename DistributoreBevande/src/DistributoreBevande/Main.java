@@ -1,13 +1,15 @@
 package DistributoreBevande;
 import java.util.Scanner;
 
-public class Main {
+public class Main 
+{
     public static void main(String[] args) {
         GestoreDistributore distributore = new GestoreDistributore();
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
-        while (running) {				 // Menu principale
+        while (running) 
+        {				 // Menu principale
            
             System.out.println("\n--- Distributore Automatico ---");
             System.out.println("1. Visualizza lista prodotti");
