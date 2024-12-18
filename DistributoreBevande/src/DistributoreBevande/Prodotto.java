@@ -1,25 +1,19 @@
 package DistributoreBevande;
-
-public class Prodotto {
-	
+//Creazione classe
+public class Prodotto {	
 	String nome;
 	double prezzo;
 	int quantita;
-	
 	int nAcquisti;
-	
-	
-	
-	//per l'utente
+
+	// Costruttori
 	public Prodotto(String nome) {
 		this.nome = nome;
 		this.prezzo = (double) Math.round((Math.random() * 3 + 1) * 100)/100;
 		this.quantita = (int) (Math.random() * 21);
 	}
 	
-	//per l'operatore
 	public Prodotto(String nome, int quantita, double prezzo) {
-		
 		this.nome = nome;
 		this.prezzo = prezzo;
 		this.quantita = quantita;
@@ -41,7 +35,6 @@ public class Prodotto {
 	public void setQuantita(int quantita) {
 	    this.quantita=quantita;	
 	}
-	
 	
 	@Override
 	public String toString() {
