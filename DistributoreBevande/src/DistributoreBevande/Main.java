@@ -5,27 +5,35 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-
+        //nuovo oggetto distributore
 		Distributore distributore = new Distributore("AllYouCanDrink");
-		System.out.println("BENVENUTO AL DISTRIBUTORE😊 \n" + distributore.nome + "!🎉" + "\nSELEZIONARE CATEGORIA: ");
+		System.out.println("->BENVENUTO AL DISTRIBUTORE😊<- \n" + distributore.nome + "!🎉" + "\nSELEZIONARE CATEGORIA: ");
 
 		Scanner scanner = new Scanner(System.in);
 
 		int input;
-
+        //MENU UTENTE
 		input = 1;
 		while (input == 1) {
-
 			distributore.stampaCategorie();
 			System.out.print("-> ");
-			int sceltaCategoria = scanner.nextInt();
+			int sceltaCategoria=0;
+			//GESTIONE DELL ERRORE SU INSERIMENTO CARATTERE ANZICHE NUMERO INTERO
+			try {
+			sceltaCategoria = scanner.nextInt();
+			}
+	       catch(Exception e){
+	    	   System.out.println("Carattere non valido. Inserire numero intero."); 
+	    	   scanner.nextLine();
+	    	   continue;
+	       }
 			if (sceltaCategoria == 9) {
 				System.out.println("Arrivederci👋");
 				input = -1;
 			} else if (distributore.modalitaOperatore(scanner, sceltaCategoria)) {
-				break;
+				continue;
 
-			} else if (sceltaCategoria > distributore.categorie.length) {
+			} else if (sceltaCategoria > distributore.categorie.length || sceltaCategoria<=0) {
 				System.out.println("Input non valido. Per favore, riprovare.⚠️");
 			} else {
 				Categoria categoriaScelta = distributore.categorie[sceltaCategoria - 1];
@@ -40,16 +48,10 @@ public class Main {
 
 					if (sceltaProdotto == 0) {
 						break;
-					} else if (sceltaProdotto > categoriaScelta.prodotti.size()) {
+					} else if (sceltaProdotto > categoriaScelta.prodotti.size()||sceltaProdotto<0) {
 						System.out.println("Input non valido. Per favore, riprovare.⚠️");
 					} else {
 						Prodotto prodottoScelto = categoriaScelta.prodotti.get(sceltaProdotto - 1);
-						// Abbiamo gia il controllo della validita' del codiceProdotto
-
-						// da fare:
-						// Controllo Quantita Prodotto -> Erogazione fatto
-						// Controllo Qunatita Prodotto -> Controllo Bicchiere -> Chiedere zucchero ->
-						// Controllo palette (opzionale) -> Erogazione
 						if (distributore.controlloQuantita(categoriaScelta, prodottoScelto, scanner)) {
 							break;
 						}

@@ -2,41 +2,27 @@ package DistributoreBevande;
 
 import java.util.ArrayList;
 
+//creazione classe
 public class Categoria {
-	
+//attributi
 	String nome;
-	ArrayList <Prodotto> prodotti = new ArrayList <Prodotto> ();
+	ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
 	boolean controlloAggiuntivo;
-	
+
+	// costruttore
 	public Categoria(String nome) {
 		this.controlloAggiuntivo = false;
 		this.nome = nome;
 	}
-	
+
+	// metodo che stampa i prodotti dell' ArrayList prodotti
 	public void stampaProdotti() {
-		
 		System.out.println("0) MENU' CATEGORIE");
-		for (int i = 0; i<prodotti.size(); i++) {
-			System.out.println((i+1) + ")" + " " + prodotti.get(i).toString());
-		}
-		
-	}
-	
-	public void aggiungiProdotti(Prodotto prodotto1) {
-		
-		boolean trovato = false;
 		for (int i = 0; i < prodotti.size(); i++) {
-			if (prodotto1.nome.equalsIgnoreCase(prodotti.get(i).nome)) {
-				System.out.println("Prodotto già esistente.");
-				trovato = true;
-			} 
+			System.out.println((i + 1) + ")" + " " + prodotti.get(i).toString());
 		}
-		if (trovato == false) {
-			prodotti.add(prodotto1);
-			System.out.println("Prodotto aggiunto con successo!");
-		}
-		
 	}
+<<<<<<< HEAD
 	
 	public void cancellaProdotto(int indiceDaCancellare) {
 		
@@ -50,4 +36,6 @@ public class Categoria {
 		
 	}
 
+=======
+>>>>>>> branch 'master' of https://github.com/angelatricarico/gestioneDistributoreBevande.git
 }
