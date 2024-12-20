@@ -22,4 +22,16 @@ public class Categoria {
 			System.out.println((i + 1) + ")" + " " + prodotti.get(i).toString());
 		}
 	}
+	
+	public void cancellaProdotto(int indiceDaCancellare) {
+		
+		//controllare che l'indice inserito corrisponda ad un prodotto
+		if (indiceDaCancellare >= 0 && indiceDaCancellare < prodotti.size()) {
+			prodotti.remove(indiceDaCancellare);
+			System.out.println("Prodotto rimosso con successo!");
+		} else {
+			System.out.println("Prodotto inesistente");
+		}
+		
+	}
 }
