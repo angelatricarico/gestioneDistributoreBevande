@@ -22,7 +22,6 @@ public class Categoria {
 			System.out.println((i + 1) + ")" + " " + prodotti.get(i).toString());
 		}
 	}
-<<<<<<< HEAD
 	
 	public void cancellaProdotto(int indiceDaCancellare) {
 		
@@ -35,7 +34,4 @@ public class Categoria {
 		}
 		
 	}
-
-=======
->>>>>>> branch 'master' of https://github.com/angelatricarico/gestioneDistributoreBevande.git
 }
