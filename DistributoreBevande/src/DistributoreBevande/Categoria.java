@@ -49,10 +49,5 @@ public class Categoria {
 		}
 		
 	}
-	
-	
-	//metodo per aggiornare prodotti
-	
-	
-	//metodo per controllare quantita
+
 }
